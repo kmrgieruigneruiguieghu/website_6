@@ -1,0 +1,43 @@
+async function seed() {
+  await db.insert(products).values([
+    {
+      title: "Ноутбук",
+      price: 100000,
+      description: "Мощный рабочий ноутбук",
+    },
+    {
+      title: "Смартфон",
+      price: 50000,
+      description: "Современный телефон",
+    },
+    {
+      title: "Наушники",
+      price: 10000,
+      description: "Беспроводные наушники",
+    },
+    {
+      title: "Клавиатура",
+      price: 7000,
+      description: "Механическая клавиатура",
+    },
+    {
+      title: "Мышь",
+      price: 3000,
+      description: "Игровая мышь",
+    },
+    {
+      title: "PowerUp X1 Quantum Nexus HyperDrive Pro Max Ultra Premium Elite Platinum Gold Diamond Titanium Special Limited Anniversary Collector's Edition Supreme Ultimate Advanced Performance Series X-treme Power Boost Plus Infinity UltraLog Gold Platinum Titanium Edition",
+      price: 25000,
+      description: "77 ядер, С",
+    },
+    {
+      title: "Планшет",
+      price: 40000,
+      description: "Для работы и развлечений",
+    },
+  ])
+
+  console.log("Данные добавлены")
+}
+
+seed()
