@@ -1,99 +1,106 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useCallback } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 
 const slides = [
-  { id: 1, title: "ЗА 149₽.", subtitle: "до 05.12.2021", image: "/promo1.jpg" },
-  { id: 2, title: "Акция дня", subtitle: "Скидка 20%", image: "/promo2.jpg" },
-  { id: 3, title: "Новинка", subtitle: "Пробуйте первыми", image: "/promo3.jpg" },
+  { id: 1, image: "/image_1.png", alt: "Слайд 1" },
+  { id: 2, image: "/image_2.png", alt: "Слайд 2" },
+  { id: 3, image: "/image_3.png", alt: "Слайд 3" },
 ]
 
 export default function Carousel() {
-  const [current, setCurrent] = useState(1) // центральный индекс
-  const [items, setItems] = useState(() => {
-    // создаём «бесконечный» массив: дублируем слайды
-    return [...slides, ...slides, ...slides]
-  })
+  const [currentIndex, setCurrentIndex] = useState(0)
 
-  const prev = useCallback(() => {
-    setCurrent((prev) => prev - 1)
+  const prevSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
   }, [])
 
-  const next = useCallback(() => {
-    setCurrent((prev) => prev + 1)
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
   }, [])
 
-  // эффект для «перемотки» при достижении границ
-  useEffect(() => {
-    const middleStart = slides.length
-    const middleEnd = slides.length * 2 - 1
-    if (current < middleStart) {
-      setTimeout(() => setCurrent(current + slides.length), 0)
-    } else if (current > middleEnd) {
-      setTimeout(() => setCurrent(current - slides.length), 0)
-    }
-  }, [current, slides.length])
+  const getSlide = (offset: number) => {
+    let index = currentIndex + offset
+    if (index < 0) index = slides.length + index
+    if (index >= slides.length) index = index - slides.length
+    return slides[index]
+  }
 
   return (
-    <div className="relative overflow-hidden py-12 bg-white">
-      <div className="max-w-7xl mx-auto px-4 relative">
-        {/* кнопки */}
+    <div className="relative overflow-hidden py-16 bg-white">
+      <div className="relative">
+        
+        {/* Кнопка назад */}
         <button
-          onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 shadow hover:bg-white transition"
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-all duration-300 hover:scale-110 border border-gray-100"
+          aria-label="Предыдущий слайд"
         >
-          <ChevronLeft className="w-6 h-6" />
-        </button>
-        <button
-          onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-white/80 shadow hover:bg-white transition"
-        >
-          <ChevronRight className="w-6 h-6" />
+          <ChevronLeft className="w-6 h-6 text-gray-600" />
         </button>
 
-        {/* карусель */}
-        <div className="flex justify-center items-center gap-4 overflow-hidden">
-          {items.map((slide, idx) => {
-            const offset = idx - current
-            let opacity = "opacity-0 pointer-events-none"
-            let scale = "scale-75"
-            let zIndex = "z-0"
+        {/* Кнопка вперёд */}
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-all duration-300 hover:scale-110 border border-gray-100"
+          aria-label="Следующий слайд"
+        >
+          <ChevronRight className="w-6 h-6 text-gray-600" />
+        </button>
 
-            if (offset === 0) {
-              opacity = "opacity-100"
-              scale = "scale-100"
-              zIndex = "z-10"
-            } else if (offset === -1 || offset === 1) {
-              opacity = "opacity-50"
-              scale = "scale-90"
-              zIndex = "z-5"
-            } else if (offset === -2 || offset === 2) {
-              opacity = "opacity-20"
-              scale = "scale-75"
-            }
+        {/* Карусель - боковые выходят за экран */}
+        <div className="flex justify-center items-center overflow-visible">
+          
+          {/* Левый полупрозрачный (выходит за экран слева) */}
+          <div className="hidden lg:block w-64 flex-shrink-0 transition-all duration-500 opacity-30 -ml-32">
+            <div className="relative w-full h-72">
+              <Image
+                src={getSlide(-1).image}
+                alt={getSlide(-1).alt}
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
 
-            return (
-              <div
-                key={`${slide.id}-${idx}`}
-                className={`transition-all duration-500 ease-in-out ${opacity} ${scale} ${zIndex} w-80 flex-shrink-0`}
-              >
-                <div className="bg-gradient-to-br from-red-500 to-orange-500 rounded-3xl p-6 text-white text-center shadow-xl">
-                  <div className="text-5xl font-black mb-2">{slide.title}</div>
-                  <div className="text-xl">{slide.subtitle}</div>
-                  <div className="mt-4 h-40 relative">
-                    <Image
-                      src={slide.image}
-                      alt="promo"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+          {/* Первый центральный */}
+          <div className="w-80 sm:w-96 flex-shrink-0 transition-all duration-500">
+            <div className="relative w-full h-80 sm:h-96">
+              <Image
+                src={getSlide(0).image}
+                alt={getSlide(0).alt}
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Второй центральный */}
+          <div className="w-80 sm:w-96 flex-shrink-0 transition-all duration-500">
+            <div className="relative w-full h-80 sm:h-96">
+              <Image
+                src={getSlide(1).image}
+                alt={getSlide(1).alt}
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Правый полупрозрачный (выходит за экран справа) */}
+          <div className="hidden lg:block w-64 flex-shrink-0 transition-all duration-500 opacity-30 -mr-32">
+            <div className="relative w-full h-72">
+              <Image
+                src={getSlide(2).image}
+                alt={getSlide(2).alt}
+                fill
+                className="object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -11,21 +11,6 @@ const navItems = [
 export default function Header() {
   return (
     <header className="bg-white shadow-md sticky top-0 z-50">
-      {/* Верхняя строка: рейтинг, время доставки, телефон */}
-      <div className="bg-red-600 text-white text-sm py-2">
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <div className="flex gap-4">
-            <span>⭐ 4.8</span>
-            <span>🚚 Время доставки: от 31 мин</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Phone size={16} />
-            <span>8 499 391-84-49</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Основная навигация */}
       <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
         <Link href="/" className="text-2xl font-bold text-red-600">
           🍕 Pizza Pasta

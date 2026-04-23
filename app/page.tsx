@@ -20,13 +20,11 @@ export default async function Home({
     <>
       <Carousel />
 
-      {/* Новинки */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-8">Новинки</h2>
         <ProductsGrid products={newProducts} />
       </section>
 
-      {/* Основной каталог */}
       <section className="max-w-7xl mx-auto px-4 py-12">
         <h2 className="text-3xl font-bold mb-8">Пицца</h2>
         <ProductsGrid products={products} />
@@ -35,7 +33,6 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Блок акций */}
       <section className="bg-orange-50 py-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap justify-between items-center gap-6">
@@ -51,7 +48,6 @@ export default async function Home({
         </div>
       </section>
 
-      {/* Оплата и доставка */}
       <DeliverySection />
     </>
   )
