@@ -1,33 +1,20 @@
-import type { Product } from "@/db/types"  // ← только импорт, без объявления типа
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
+import type { Product } from "@/db/types"
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <div className="group relative bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
-      {product.isNew && (
-        <span className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full z-10">
-          NEW
-        </span>
-      )}
-      <div className="relative h-56 w-full bg-gray-100">
-        <Image
-          src={`/products/${product.imageName}`}
-          alt={product.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+    <div className="group relative bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
+      <div className="relative w-full h-50">
+        <Image src={`/${product.imageName || "pizza_1.png"}`} alt={product.title} fill className="object-contain p-3" />
       </div>
       <div className="p-5">
-        <h3 className="text-xl font-bold mb-1">{product.title}</h3>
-        <p className="text-gray-500 text-sm line-clamp-2 mb-3">
-          {product.description || "Без описания"}
-        </p>
+        <h3 className="font-bold text-gray-700 text-base mb-1">{product.title}</h3>
+        <p className="text-gray-500 text-xs mb-3">{product.description}</p>
         <div className="flex justify-between items-center">
-          <span className="text-2xl font-bold text-red-600">от {product.price} ₽</span>
-          <Button variant="default" className="rounded-full bg-red-500 hover:bg-red-700">
+          <span className="text-lg font-bold text-black">от {product.price} ₽</span>
+          <button className="bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-4 py-1.5 rounded-lg text-xs transition-colors">
             В корзину
-          </Button>
+          </button>
         </div>
       </div>
     </div>

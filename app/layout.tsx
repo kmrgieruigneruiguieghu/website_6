@@ -7,8 +7,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin", "cyrillic"] })
 
 export const metadata: Metadata = {
-  title: "Pizza Pasta | Доставка еды",
-  description: "Доставка пиццы, пасты и других блюд",
+  title: "Pizza Pasta Fibo",
 }
 
 export default function RootLayout({

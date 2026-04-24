@@ -1,86 +1,72 @@
-import Link from "next/link"
 import Image from "next/image"
-import { Mail, Phone, MapPin, Copyright } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between gap-8 mb-8">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">F</span>
-              </div>
-              <span className="text-xl font-bold">Fib pasta bar</span>
+    <footer className="bg-white border-t border-gray-100 py-12 relative overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div>
+            <div className="relative w-20 h-20 mb-6">
+              <Image src="/logo.png" alt="Логотип" fill className="object-contain" />
             </div>
-            <div>
-              <p className="text-gray-400 text-sm mb-3">Мы в соцсетях</p>
-              <div className="flex gap-4">
-                <Link href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xl">В</span>
-                </Link>
-                <Link href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xl">@</span>
-                </Link>
-                <Link href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xl font-bold">M</span>
-                </Link>
+            <div className="grid grid-cols-2 gap-8 mb-6">
+              <div>
+                <h3 className="font-semibold text-black mb-3">Калорийность и состав</h3>
+                <div className="mt-4">
+                  <p className="font-semibold text-black mb-2">Мы в соцсетях</p>
+                  <div className="flex gap-20 text-gray-500 text-sm">
+                    <p>ВКонтакте</p>
+                    <p>Max</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="flex-1 flex justify-end">
-            <div className="relative w-48 h-32 bg-linear-to-br from-red-600 to-orange-500 rounded-xl overflow-hidden shadow-lg">
-              <div className="absolute inset-0 flex items-center justify-center text-white text-center p-3">
-                <div>
-                  <div className="text-2xl font-bold">🍕</div>
-                  <div className="text-xs font-bold mt-1">Pizza Pasta</div>
-                  <div className="text-[10px] mt-1">Fibo</div>
+              <div>
+                <h3 className="font-semibold text-black mb-3">Правовая информация</h3>
+                <div className="mt-4">
+                  <p className="text-gray-500 text-sm leading-relaxed">Москва ул. Проспект<br />Вернадского 86В</p>
                 </div>
               </div>
             </div>
+            <p className="text-gray-500 text-sm">Все права защищены © 2026</p>
           </div>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6 py-6 border-t border-gray-800">
+          
           <div>
-            <h3 className="font-semibold mb-3">Правовая информация</h3>
-            <ul className="space-y-2 text-gray-400 text-sm">
-              <li><Link href="#" className="hover:text-white">Политика конфиденциальности</Link></li>
-              <li><Link href="#" className="hover:text-white">Пользовательское соглашение</Link></li>
-              <li><Link href="#" className="hover:text-white">Публичная оферта</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold mb-3">Адрес</h3>
-            <div className="flex items-start gap-2 text-gray-400 text-sm">
-              <MapPin size={16} className="mt-0.5 shrink-0" />
-              <span>Москва, ул. Проспект Вернадского, 86В</span>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-gray-800 pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-center md:text-left">
-              <p className="text-gray-400 text-sm mb-2">ОСТАЛИСЬ ВОПРОСЫ? А МЫ ВСЕГДА НА СВЯЗИ:</p>
-              <div className="flex gap-3 justify-center md:justify-start">
-                <Link href="#" className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xs">📱</span>
-                </Link>
-                <Link href="#" className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xs">💬</span>
-                </Link>
-                <Link href="#" className="w-8 h-8 bg-gray-800 rounded-full flex items-center justify-center hover:bg-red-600 transition">
-                  <span className="text-xs">✉️</span>
-                </Link>
+            <h3 className="font-semibold text-black mb-4 text-center lg:text-left">
+              ОСТАЛИСЬ ВОПРОСЫ? А МЫ ВСЕГДА НА СВЯЗИ:
+            </h3>
+            <div className="flex gap-3 mb-4">
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-blue-200">
+                <div className="relative w-8 h-8">
+                  <Image src="/vk.png" alt="VK" fill className="object-contain" />
+                </div>
+              </div>
+              <div className="flex-1 h-14 rounded-xl flex items-center justify-center border border-blue-200">
+                <span className="text-3xl font-bold text-black">@</span>
+              </div>
+              <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-blue-200">
+                <div className="relative w-8 h-8">
+                  <Image src="/max.png" alt="Max" fill className="object-contain" />
+                </div>
               </div>
             </div>
-          </div>
-          <div className="text-center text-gray-500 text-xs mt-6 pt-4 border-t border-gray-800">
-            <div className="flex items-center justify-center gap-1">
-              <Copyright size={12} />
-              <span>Все права защищены © 2026 Fib pasta bar</span>
+            <div className="mb-6">
+              <button className="w-full hover:bg-gray-200 text-black font-medium py-4 rounded-xl transition-colors border border-blue-200">
+                Написать нам
+              </button>
+            </div>
+            <div className="flex flex-col items-center lg:items-start gap-3 mb-6">
+              <span className="text-2xl font-bold text-yellow-400">8 499 391-84-49</span>
+              <button className="bg-gray-100 hover:bg-gray-200 text-black font-medium px-6 py-2 rounded-xl transition-colors">
+                Заказать звонок
+              </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 right-0 translate-x-2 translate-y-8 hidden lg:block">
+        <div className="relative w-100 h-50">
+          <Image src="/big_logo.png" alt="Big logo" fill className="object-contain" />
         </div>
       </div>
     </footer>
