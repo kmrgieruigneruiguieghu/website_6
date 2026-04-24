@@ -49,12 +49,12 @@ export default function Carousel() {
             </div>
           </div>
           <div className="w-150 shrink-0 transition-all duration-500">
-            <div className="relative w-full h-175">
+            <div className="relative w-full h-150">
               <Image src={getSlide(0).image} alt={getSlide(0).alt} fill className="object-contain" />
             </div>
           </div>
           <div className="w-150 shrink-0 transition-all duration-500">
-            <div className="relative w-full h-175">
+            <div className="relative w-full h-150">
               <Image src={getSlide(1).image} alt={getSlide(1).alt} fill className="object-contain" />
             </div>
           </div>

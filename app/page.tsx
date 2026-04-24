@@ -50,7 +50,7 @@ export default async function Home({
       </section>
 
       <div className="relative h-0 overflow-visible">
-        <div className="absolute -top-50 -translate-x-43 hidden lg:block">
+        <div className="absolute -top-50 -translate-x-48 hidden lg:block">
           <div className="relative w-96 h-112">
             <Image src="/man.png" alt="Чувак" fill className="object-contain" />
           </div>
@@ -91,7 +91,7 @@ export default async function Home({
       <PromotionSection />
 
       <div className="relative h-0 overflow-visible">
-        <div className="absolute right-0 -top-80 translate-x-35 z-0 hidden lg:block">
+        <div className="absolute right-0 -top-80 translate-x-40 z-0 hidden lg:block">
           <div className="relative w-96 h-112">
             <Image src="/woman.png" alt="Женщина" fill className="object-contain" />
           </div>

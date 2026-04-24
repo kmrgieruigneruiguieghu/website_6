@@ -20,7 +20,7 @@ export async function getProducts(page: number = 1, pageSize: number = 6) {
   const pages = Math.ceil(total / pageSize)
 
   return {
-    products: items,  // ← приведение типа
+    products: items,
     pages,
   }
 }

@@ -37,7 +37,7 @@ export default function Footer() {
             <div className="flex gap-3 mb-4">
               <div className="w-14 h-14 rounded-xl flex items-center justify-center border border-blue-200">
                 <div className="relative w-8 h-8">
-                  <Image src="/vk.png" alt="VK" fill className="object-contain" />
+                  <Image src="/vk.svg" alt="VK" fill className="object-contain" />
                 </div>
               </div>
               <div className="flex-1 h-14 rounded-xl flex items-center justify-center border border-blue-200">
